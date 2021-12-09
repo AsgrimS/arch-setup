@@ -12,7 +12,6 @@ echo "arch" >> /etc/hostname # CHANGE
 echo "127.0.0.1 localhost" >> /etc/hosts
 echo "::1       localhost" >> /etc/hosts
 echo "127.0.1.1 arch.localdomain arch" >> /etc/hosts
-echo root:password | chpasswd # CHANGE AFTER
 
 pacman -S linux linux-lts linux-firmware linux-headers linux-lts-headers btrfs-progs intel-ucode base-devel sof-firmware alsa-ucm-conf openssh networkmanager dialog wirelesstools netctl cups avahi grub dosfstools reflector  os-prober mtools efibootmgr bluez bluez-utils pipewire pipewire-alsa pipewire-pulse pipewire-jack git nano
 pacman -S tlp # You can remove the tlp package if you are installing on a desktop or vm
@@ -36,9 +35,6 @@ systemctl enable gdm # For gnome
 
 reflector --sort rate -l 30 --save /etc/pacman.d/mirrorlist
 timedatectl set-ntp true
-
-useradd -m username # CHANGE
-echo ermanno:password | chpasswd # CHANGE AFTER and enable wheel
 
 printf "\e[1;32mDone! Complete setup, type exit, umount -a and reboot.\e[0m"
 
