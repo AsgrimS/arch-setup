@@ -18,7 +18,7 @@
 8. Run `mkinitcpio -p linux` and `mkinitcpio -p linux-lts` 
 9. Edit `/etc/default/grub`
     - uncommenct `GRUB_ENABLE_CRYPTODISK=y`
-    - add to the `GRUB_CMDLINE_DEFAULT="... quite ->here<-` `cryptdevice=[path to your encryptet partition]:cryptroot root=/dev/mapper/cryptroot`
+    - add to the `GRUB_CMDLINE_DEFAULT="... quite ->here<-` `cryptdevice=[path to your encryptet partition]:cryptroot:allow-discards root=/dev/mapper/cryptroot`
 10. Regenerate grub config with `grub-mkconfig -o /boot/grub/grub.cfg`
 10. Exit -> `umount -a` -> reboot
 
