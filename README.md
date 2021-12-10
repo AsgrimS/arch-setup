@@ -1,5 +1,5 @@
 # arch-setup
-## After bootign into usb
+## After booting into usb
 1. Prepare, format and mount partitions and subvolumes
 2. `pacstrap /mnt base git nano` to install arch (you may want to install vim instead of nano)
 3. `genfstab -U /mnt >> /mnt/etc/fstab` to generate fstab
