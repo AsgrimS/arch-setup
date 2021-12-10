@@ -23,6 +23,7 @@
 10. Exit -> `umount -a` -> reboot
 
 ## Post installation tweaks
+0. If on wifi scan avaible sources with `nmcli device wifi list` and connect with `nmcli device wifi connect SSID_or_BSSID password password`
 1. Install `paru` - aur helper.
 2. Make `post-installation-tweaks.sh` executable
 3. Run `post-installation-tweaks.sh`
