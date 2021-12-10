@@ -4,7 +4,7 @@ sudo timedatectl set-ntp true
 sudo reflector --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 
 paru -S gnome gnome-tweaks # Gnome DE
-paru -S ttf-fira-code ttf-ubuntu-font-family noto-fonts-emoji matcha-gtk-theme xcursor-breeze # Optional theme/fonts packages
+paru -S --needed ttf-fira-code ttf-ubuntu-font-family noto-fonts-emoji matcha-gtk-theme xcursor-breeze papirus-icon-theme # Optional theme/fonts packages
 paru -S zramd
 
 sudo systemctl enable gdm # For gnome
