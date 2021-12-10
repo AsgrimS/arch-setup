@@ -24,7 +24,7 @@
 2. Make `post-installation-tweaks.sh` executable
 3. Run `post-installation-tweaks.sh`
 4. In `/etc/default/zramd` set swap size.
-5. Setup snapepr (https://wiki.archlinux.org/title/snapper)
+5. Setup snapper (https://wiki.archlinux.org/title/snapper)
 5. Reboot
 
 # Final setup
