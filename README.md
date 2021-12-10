@@ -43,7 +43,7 @@
 9. Go back with `cd` and unmount /mnt with `umount /mnt`
 10. Mount root subvolume with `mount -o noatime,compress=zstd,space_cache=v2,discard=async,subvol=@ /dev/mapper/cryptroot /mnt`
 11. Create directories for the rest of subvolumes with `mkdir mnt/{boot,home,var,.snapshots}`
-12. Mount boot partition with `
+12. Mount boot partition with `mount /dev/.. <- path to boot partition /mnt/boot`
 13. Mount subvolumes with:
     - `mount -o noatime,compress=zstd,space_cache=v2,discard=async,subvol=@home /dev/mapper/cryptroot /mnt/home`
     - `mount -o noatime,compress=zstd,space_cache=v2,discard=async,subvol=@home /dev/mapper/cryptroot /mnt/var`
