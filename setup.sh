@@ -1,10 +1,12 @@
 #!/bin/bash
 
-ln -sf /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
+ln -sf /usr/share/zoneinfo/Europe/Warsaw /etc/localtime # CHANGE
 hwclock --systohc
-echo "LANG=en_US.UTF-8 UTF-8" >> /etc/locale.gen
-echo "LANG=pl_PL.UTF-8 UTF-8" >> /etc/locale.gen
+
+echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+echo "pl_PL.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
+
 echo "LANG=pl_PL.UTF-8" >> /etc/locale.conf
 echo "LC_MESSAGES=en_US.UTF-8" >> /etc/locale.conf
 echo "KEYMAP=pl_PL" >> /etc/vconsole.conf
@@ -13,13 +15,11 @@ echo "127.0.0.1 localhost" >> /etc/hosts
 echo "::1       localhost" >> /etc/hosts
 echo "127.0.1.1 arch.localdomain arch" >> /etc/hosts
 
-pacman -S linux linux-lts linux-firmware linux-headers linux-lts-headers btrfs-progs intel-ucode base-devel sof-firmware alsa-ucm-conf openssh networkmanager dialog wireless_tools netctl cups avahi grub dosfstools reflector  os-prober mtools efibootmgr bluez bluez-utils pipewire pipewire-alsa pipewire-pulse pipewire-jack git nano
+pacman -S linux linux-lts linux-firmware linux-headers linux-lts-headers btrfs-progs intel-ucode base-devel sof-firmware alsa-ucm-conf openssh networkmanager dialog wireless_tools grub dosfstools reflector  os-prober mtools efibootmgr bluez bluez-utils pipewire pipewire-alsa pipewire-pulse pipewire-jack cups nano man-db
 pacman -S tlp # You can remove the tlp package if you are installing on a desktop or vm
-pacman -S gnome gnome-tweaks # Gnome DE
-# pacman -S ttf-fira-code ttf-ubuntu-font-family noto-fonts-emoji matcha-gtk-theme xcursor-breeze # Optional theme/fonts packages
 
-# pacman -S xf86-video-amdgpu
-pacman -S nvidia nvidia-lts nvidia-settings # Drivers for nvidia
+# pacman -S xf86-video-amdgpu # Drivers for AMD
+pacman -S nvidia nvidia-lts nvidia-settings # Proprietary drivers for Nvidia
 
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
@@ -31,9 +31,8 @@ systemctl enable sshd
 systemctl enable tlp # You can comment this command out if you didn't install tlp, see above
 systemctl enable reflector.timer
 systemctl enable fstrim.timer # For ssds
-systemctl enable gdm # For gnome
 
 useradd -m -g users -G wheel <username> # CHANGE
 
-printf "\e[1;32mDone! Complete setup, type exit, umount -a and reboot.\e[0m"
+printf "\e[1;32mDone! Follow readme to complete the setup.\e[0m"
 
