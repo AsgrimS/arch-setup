@@ -1,5 +1,4 @@
-# arch-setup-script
-
+# arch-setup
 ## After bootign into usb
 1. Prepare, format and mount partitions and subvolumes
 2. `pacstrap /mnt base git nano` to install arch (you may want to install vim instead of nano)
@@ -7,7 +6,7 @@
 4. Enter your arch installation with`arch-chroot /mnt`
 
 ## In chroot
-1. Copy this repo with `git clone https://github.com/AsgrimS/arch-setup-script.git`
+1. Copy this repo with `git clone https://github.com/AsgrimS/arch-setup.git`
 2. Open `setup.sh` file and adjust fileds.
 3. Make `setup.sh` executable
 4. Run `setup.sh`
