@@ -15,7 +15,7 @@ echo "127.0.0.1 localhost" >> /etc/hosts
 echo "::1       localhost" >> /etc/hosts
 echo "127.0.1.1 arch.localdomain arch" >> /etc/hosts
 
-pacman -S linux linux-lts linux-firmware linux-headers linux-lts-headers btrfs-progs intel-ucode base-devel sof-firmware alsa-ucm-conf openssh networkmanager dialog wireless_tools grub dosfstools reflector  os-prober mtools efibootmgr bluez bluez-utils pipewire pipewire-alsa pipewire-pulse pipewire-jack cups nano man-db
+pacman -S --needed linux linux-lts linux-firmware linux-headers linux-lts-headers btrfs-progs intel-ucode base-devel sof-firmware alsa-ucm-conf openssh networkmanager dialog wireless_tools grub dosfstools reflector  os-prober mtools efibootmgr bluez bluez-utils pipewire pipewire-alsa pipewire-pulse pipewire-jack cups man-db
 pacman -S tlp # You can remove the tlp package if you are installing on a desktop or vm
 
 # pacman -S xf86-video-amdgpu # Drivers for AMD

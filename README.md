@@ -2,22 +2,21 @@
 
 ## After bootign into usb
 1. Prepare, format and mount partitions and subvolumes
-2. `pacstrap /mnt base` to install arch
+2. `pacstrap /mnt base git nano` to install arch (you may want to install vim instead of nano)
 3. `genfstab -U /mnt >> /mnt/etc/fstab` to generate fstab
-4. arch-chroot /mnt
+4. Enter your arch installation with`arch-chroot /mnt`
 
 ## In chroot
-1. Install git with `pacman -S git`
-2. Copy this repo with `git clone https://github.com/AsgrimS/arch-setup-script.git`
-3. Open `setup.sh` file and adjust fileds.
-4. Make `setup.sh` executable
-5. Run `setup.sh`
-6. `passwd` and `passwd <user>` to change passowrd of the root and user
-7. `visudo` `EDITOR=nano visudo` and uncomment `%wheel ALL=(ALL) ALL`
-8. Edit `mkinitcpio.conf`
-9. Run `mkinitcpio -p linux` and `mkinitcpio -p linux-lts` 
-10. Adjust grub
-11. Exit -> `umount -a` -> reboot
+1. Copy this repo with `git clone https://github.com/AsgrimS/arch-setup-script.git`
+2. Open `setup.sh` file and adjust fileds.
+3. Make `setup.sh` executable
+4. Run `setup.sh`
+5. `passwd` and `passwd <user>` to change passowrd of the root and user
+6. `visudo` `EDITOR=nano visudo` and uncomment `%wheel ALL=(ALL) ALL`
+7. Edit `mkinitcpio.conf`
+8. Run `mkinitcpio -p linux` and `mkinitcpio -p linux-lts` 
+9. Adjust grub
+10. Exit -> `umount -a` -> reboot
 
 ## Post installation tweaks
 1. Install `paru` - aur helper.
