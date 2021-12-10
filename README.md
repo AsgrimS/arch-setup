@@ -13,9 +13,14 @@
 4. Run `setup.sh`
 5. `passwd` and `passwd <user>` to change passowrd of the root and user
 6. `visudo` `EDITOR=nano visudo` and uncomment `%wheel ALL=(ALL) ALL`
-7. Edit `mkinitcpio.conf`
+7. Edit `etc/mkinitcpio.conf`
+    - add `btrfs` to the `MODULES=()`
+    - add `encrypt` to the `HOOKS=(...block -> encrypt <- filesystems ...)`
 8. Run `mkinitcpio -p linux` and `mkinitcpio -p linux-lts` 
-9. Adjust grub
+9. Edit '/etc/default/grub
+    - uncommenct `GRUB_ENABLE_CRYPTODISK=y`
+    - add to the `GRUB_CMDLINE_DEFAULT="... quite ->here<-` `cryptdevice=[path to your encryptet partition]:cryptroot root=/dev/mapper/cryptroot`
+10. Regenerate grub config with `grub-mkconfig -o /boot/grub/grub.cfg`
 10. Exit -> `umount -a` -> reboot
 
 ## Post installation tweaks
@@ -37,11 +42,12 @@
 8. Enter /mnt with `cd /mnt` and create root subvolumes `btrfs su cr @`, `btrfs su cr @home`, `btrfs su cr @var`, `btrfs su cr @snapshots`
 9. Go back with `cd` and unmount /mnt with `umount /mnt`
 10. Mount root subvolume with `mount -o noatime,compress=zstd,space_cache=v2,discard=async,subvol=@ /dev/mapper/cryptroot /mnt`
-11. Create directories for the rest of subvolumes with `mkdir mnt/{home,var,.snapshots}`
-12. Mount subvolumes with:
- - `mount -o noatime,compress=zstd,space_cache=v2,discard=async,subvol=@home /dev/mapper/cryptroot /mnt/home`
- - `mount -o noatime,compress=zstd,space_cache=v2,discard=async,subvol=@home /dev/mapper/cryptroot /mnt/var`
- - `mount -o noatime,compress=zstd,space_cache=v2,discard=async,subvol=@snapshots /dev/mapper/cryptroot /mnt/.snapshots`
+11. Create directories for the rest of subvolumes with `mkdir mnt/{boot,home,var,.snapshots}`
+12. Mount boot partition with `
+13. Mount subvolumes with:
+    - `mount -o noatime,compress=zstd,space_cache=v2,discard=async,subvol=@home /dev/mapper/cryptroot /mnt/home`
+    - `mount -o noatime,compress=zstd,space_cache=v2,discard=async,subvol=@home /dev/mapper/cryptroot /mnt/var`
+    - `mount -o noatime,compress=zstd,space_cache=v2,discard=async,subvol=@snapshots /dev/mapper/cryptroot /mnt/.snapshots`
 
 # Final setup
 Arch on BTRFS and GNOME ready for snapper configuration.
